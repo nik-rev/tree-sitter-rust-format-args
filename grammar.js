@@ -37,14 +37,14 @@ module.exports = grammar({
         optional($.argument),
         optional(
           seq(
-            ":",
+            alias(":", $.colon),
             seq(
               optional(seq(optional($.fill), $.align)),
               optional($.sign),
               optional("#"),
-              optional("0"),
+              optional(alias("0", $.number)),
               optional(alias($.count, $.width)),
-              optional(seq(".", choice($.count, "*"))),
+              optional(alias(seq(".", choice($.count, "*")), $.number)),
               optional($.type),
             ),
           ),
@@ -54,6 +54,8 @@ module.exports = grammar({
 
     escaped: () => "escaped",
     width: () => "width",
+    number: () => "number",
+    colon: () => "colon",
 
     // this is actually optional, but we mark as repeat1 to avoid
     // tree-sitter complaining that it matches an empty string.
@@ -75,7 +77,7 @@ module.exports = grammar({
     type: ($) =>
       choice("?", "x?", "X?", "o", "x", "X", "p", "b", "e", "E", $.identifier),
 
-    count: ($) => choice($.integer, $.parameter),
+    count: ($) => choice(alias($.integer, $.number), $.parameter),
 
     parameter: ($) => seq($.argument, "$"),
 

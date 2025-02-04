@@ -76,8 +76,13 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": ":"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "STRING",
+                    "value": ":"
+                  },
+                  "named": true,
+                  "value": "colon"
                 },
                 {
                   "type": "SEQ",
@@ -139,8 +144,13 @@
                       "type": "CHOICE",
                       "members": [
                         {
-                          "type": "STRING",
-                          "value": "0"
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "STRING",
+                            "value": "0"
+                          },
+                          "named": true,
+                          "value": "number"
                         },
                         {
                           "type": "BLANK"
@@ -168,26 +178,31 @@
                       "type": "CHOICE",
                       "members": [
                         {
-                          "type": "SEQ",
-                          "members": [
-                            {
-                              "type": "STRING",
-                              "value": "."
-                            },
-                            {
-                              "type": "CHOICE",
-                              "members": [
-                                {
-                                  "type": "SYMBOL",
-                                  "name": "count"
-                                },
-                                {
-                                  "type": "STRING",
-                                  "value": "*"
-                                }
-                              ]
-                            }
-                          ]
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "."
+                              },
+                              {
+                                "type": "CHOICE",
+                                "members": [
+                                  {
+                                    "type": "SYMBOL",
+                                    "name": "count"
+                                  },
+                                  {
+                                    "type": "STRING",
+                                    "value": "*"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "named": true,
+                          "value": "number"
                         },
                         {
                           "type": "BLANK"
@@ -228,6 +243,14 @@
     "width": {
       "type": "STRING",
       "value": "width"
+    },
+    "number": {
+      "type": "STRING",
+      "value": "number"
+    },
+    "colon": {
+      "type": "STRING",
+      "value": "colon"
     },
     "fill": {
       "type": "CHOICE",
@@ -325,8 +348,13 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "integer"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "integer"
+          },
+          "named": true,
+          "value": "number"
         },
         {
           "type": "SYMBOL",

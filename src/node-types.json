@@ -24,25 +24,6 @@
     }
   },
   {
-    "type": "count",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "parameter",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "fill",
     "named": true,
     "fields": {}
@@ -64,11 +45,15 @@
           "named": true
         },
         {
-          "type": "count",
+          "type": "colon",
           "named": true
         },
         {
           "type": "fill",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -105,6 +90,25 @@
         },
         {
           "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         }
       ]
@@ -154,7 +158,7 @@
       "required": true,
       "types": [
         {
-          "type": "integer",
+          "type": "number",
           "named": true
         },
         {
@@ -173,10 +177,6 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
     "type": "+",
     "named": false
   },
@@ -185,15 +185,7 @@
     "named": false
   },
   {
-    "type": ".",
-    "named": false
-  },
-  {
     "type": "0",
-    "named": false
-  },
-  {
-    "type": ":",
     "named": false
   },
   {
@@ -227,6 +219,10 @@
   {
     "type": "b",
     "named": false
+  },
+  {
+    "type": "colon",
+    "named": true
   },
   {
     "type": "e",

@@ -72,21 +72,24 @@ Padding and alignment
   (text)
   
   (format
+    (colon)
     (align)
     (width
-      (integer)))
+      (number)))
   (text)
   
   (format
+    (colon)
     (align)
     (width
-      (integer)))
+      (number)))
   (text)
   
   (format
+    (colon)
     (align)
     (width
-      (integer)))
+      (number)))
   (text))
 
 ==================
@@ -99,10 +102,12 @@ Floating points
   (text)
   
   (format
+    (colon)
     (width
-      (integer))
-    (count
-      (integer)))
+      (number))
+    (number)
+    (number
+      (number)))
   (text))
 
 ==================
@@ -115,14 +120,17 @@ Hexadecimal and binary formatting
   (text)
   
   (format
+    (colon)
     (type))
   (text)
   
   (format
+    (colon)
     (type))
   (text)
   
   (format
+    (colon)
     (type))
   (text))
 
@@ -140,20 +148,24 @@ yet {world:#?} hello
   (format
     (argument
       (identifier))
+    (colon)
     (type))
   (text)
   
   (format
     (argument
       (identifier))
+    (colon)
     (type))
   (text)
   
   (format
+    (colon)
     (type))
   (text)
   
   (format
+    (colon)
     (type))
   (text))
 
@@ -169,24 +181,27 @@ Padding, width and alignment
   (text)
   
   (format
+    (colon)
     (fill)
     (align)
     (width
-      (integer)))
+      (number)))
   (text)
   
   (format
+    (colon)
     (fill)
     (align)
     (width
-      (integer)))
+      (number)))
   (text)
   
   (format
+    (colon)
     (fill)
     (align)
     (width
-      (integer)))
+      (number)))
   (text))
 
 ==================
@@ -201,14 +216,17 @@ Formatting with Sign Handling
   (text)
   
   (format
+    (colon)
     (sign))
   (text)
   
   (format
+    (colon)
     (sign))
   (text)
   
-  (format)
+  (format
+    (colon))
   (text))
 
 ==================
@@ -223,14 +241,19 @@ Scientific notation
   (text)
   
   (format
+    (colon)
     (type))
   (text)
   
   (format
+    (colon)
     (type))
   (text)
   
-  (format)
+  (format
+    (colon)
+    (number)
+    (number))
   (text))
 
 ==================
@@ -243,25 +266,30 @@ uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
   (text)
   
   (format
+    (colon)
     (align)
     (width
-      (integer)))
+      (number)))
   (text)
   
   (format
-    (count
-      (integer)))
+    (colon)
+    (number)
+    (number
+      (number)))
   (text)
   
   (format
+    (colon)
     (type))
   (text)
   
   (format
+    (colon)
     (fill)
     (align)
     (width
-      (integer)))
+      (number)))
   (text))
 
 
