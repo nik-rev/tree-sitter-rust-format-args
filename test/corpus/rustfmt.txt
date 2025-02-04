@@ -6,8 +6,8 @@ Empty value
 
 (format_string
   (text)
-  (maybe_format
-    (format))
+  
+  (format)
   (text))
 
 ==================
@@ -18,10 +18,10 @@ Variable with name
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))))
+  
+  (format
+    (argument
+      (identifier)))
   (text))
 
 ==================
@@ -32,15 +32,15 @@ Two variables
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))))
+  
+  (format
+    (argument
+      (identifier)))
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))))
+  
+  (format
+    (argument
+      (identifier)))
   (text))
 
 ==================
@@ -51,15 +51,15 @@ hello {hello} world {world}
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))))
+  
+  (format
+    (argument
+      (identifier)))
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))))
+  
+  (format
+    (argument
+      (identifier)))
   (text))
 
 ==================
@@ -70,23 +70,23 @@ Padding and alignment
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (align)
+    (width
+      (integer)))
   (text)
-  (maybe_format
-    (format
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (align)
+    (width
+      (integer)))
   (text)
-  (maybe_format
-    (format
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (align)
+    (width
+      (integer)))
   (text))
 
 ==================
@@ -97,12 +97,12 @@ Floating points
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (width
-        (integer))
-      (count
-        (integer))))
+  
+  (format
+    (width
+      (integer))
+    (count
+      (integer)))
   (text))
 
 ==================
@@ -113,17 +113,17 @@ Hexadecimal and binary formatting
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text))
 
 ==================
@@ -136,25 +136,25 @@ yet {world:#?} hello
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))
-      (type)))
+  
+  (format
+    (argument
+      (identifier))
+    (type))
   (text)
-  (maybe_format
-    (format
-      (argument
-        (identifier))
-      (type)))
+  
+  (format
+    (argument
+      (identifier))
+    (type))
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text))
 
 ==================
@@ -167,26 +167,26 @@ Padding, width and alignment
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (fill)
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (fill)
+    (align)
+    (width
+      (integer)))
   (text)
-  (maybe_format
-    (format
-      (fill)
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (fill)
+    (align)
+    (width
+      (integer)))
   (text)
-  (maybe_format
-    (format
-      (fill)
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (fill)
+    (align)
+    (width
+      (integer)))
   (text))
 
 ==================
@@ -199,16 +199,16 @@ Formatting with Sign Handling
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (sign)))
+  
+  (format
+    (sign))
   (text)
-  (maybe_format
-    (format
-      (sign)))
+  
+  (format
+    (sign))
   (text)
-  (maybe_format
-    (format))
+  
+  (format)
   (text))
 
 ==================
@@ -221,45 +221,65 @@ Scientific notation
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text)
-  (maybe_format
-    (format))
+  
+  (format)
   (text))
 
 ==================
-multiple formatting options
+Multiple formatting options
 ==================
 uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
 ---
 
 (format_string
   (text)
-  (maybe_format
-    (format
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (align)
+    (width
+      (integer)))
   (text)
-  (maybe_format
-    (format
-      (count
-        (integer))))
+  
+  (format
+    (count
+      (integer)))
   (text)
-  (maybe_format
-    (format
-      (type)))
+  
+  (format
+    (type))
   (text)
-  (maybe_format
-    (format
-      (fill)
-      (align)
-      (width
-        (integer))))
+  
+  (format
+    (fill)
+    (align)
+    (width
+      (integer)))
   (text))
+
+
+==================
+Escaping
+==================
+hello {{ world }} {hello}
+---
+
+(format_string
+  (text)
+  (escaped)
+  (text)
+  (escaped)
+  (text)
+  
+  (format
+    (argument
+      (identifier)))
+  (text))
+

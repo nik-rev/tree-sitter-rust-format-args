@@ -15,8 +15,31 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "maybe_format"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "STRING",
+                      "value": "{{"
+                    },
+                    "named": true,
+                    "value": "escaped"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "STRING",
+                      "value": "}}"
+                    },
+                    "named": true,
+                    "value": "escaped"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "format"
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -24,23 +47,6 @@
               }
             ]
           }
-        }
-      ]
-    },
-    "maybe_format": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{{"
-        },
-        {
-          "type": "STRING",
-          "value": "}}"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "format"
         }
       ]
     },
@@ -215,9 +221,13 @@
         }
       ]
     },
+    "escaped": {
+      "type": "STRING",
+      "value": "escaped"
+    },
     "width": {
       "type": "STRING",
-      "value": "alias"
+      "value": "width"
     },
     "fill": {
       "type": "CHOICE",
@@ -353,10 +363,6 @@
     "text": {
       "type": "PATTERN",
       "value": "[^\\{\\}]*"
-    },
-    "ws": {
-      "type": "PATTERN",
-      "value": "\\s"
     },
     "integer": {
       "type": "PATTERN",

@@ -20,9 +20,16 @@ module.exports = grammar({
 
   rules: {
     // syntax: https://doc.rust-lang.org/std/fmt/index.html#syntax
-    format_string: ($) => seq($.text, repeat(seq($.maybe_format, $.text))),
-
-    maybe_format: ($) => choice("{{", "}}", $.format),
+    format_string: ($) =>
+      seq(
+        $.text,
+        repeat(
+          seq(
+            choice(alias("{{", $.escaped), alias("}}", $.escaped), $.format),
+            $.text,
+          ),
+        ),
+      ),
 
     format: ($) =>
       seq(
@@ -45,7 +52,8 @@ module.exports = grammar({
         "}",
       ),
 
-    width: () => "alias",
+    escaped: () => "escaped",
+    width: () => "width",
 
     // this is actually optional, but we mark as repeat1 to avoid
     // tree-sitter complaining that it matches an empty string.
@@ -77,9 +85,6 @@ module.exports = grammar({
 
     // text must not contain '{' or '}'
     text: () => /[^\{\}]*/,
-
-    // any character for which char::is_whitespace returns true
-    ws: () => /\s/,
 
     integer: () => /\d+/,
 
