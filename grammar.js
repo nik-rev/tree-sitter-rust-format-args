@@ -57,23 +57,11 @@ module.exports = grammar({
     number: () => "number",
     colon: () => "colon",
 
-    // this is actually optional, but we mark as repeat1 to avoid
-    // tree-sitter complaining that it matches an empty string.
-    //
-    // Then, when we use this rule we add optional(...)
-
     fill: () => choice(/[^0]/, "0"),
 
     align: () => choice("<", "^", ">"),
 
     sign: () => choice("+", "-"),
-
-    // precision: ($) => ,
-
-    // it can also be "", the empty string. But we don't put it here
-    // otherwise tree-sitter will complain about matching the empty string.
-    //
-    // Instead, what we do is mark it as "optional" anywhere we use it
     type: ($) =>
       choice("?", "x?", "X?", "o", "x", "X", "p", "b", "e", "E", $.identifier),
 
@@ -83,9 +71,6 @@ module.exports = grammar({
 
     argument: ($) => choice($.integer, $.identifier),
 
-    // primitives
-
-    // text must not contain '{' or '}'
     text: () => /[^\{\}]*/,
 
     integer: () => /\d+/,
