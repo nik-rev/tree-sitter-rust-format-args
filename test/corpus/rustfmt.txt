@@ -1,0 +1,104 @@
+==================
+Empty value
+==================
+{}
+---
+
+(source)
+
+==================
+Variable with name
+==================
+{hello}
+---
+
+(source)
+
+==================
+Two variables
+==================
+{hello} {world}
+---
+
+(source)
+
+==================
+Two variables with text
+==================
+hello {hello} world {world}
+---
+
+(source)
+
+==================
+Padding and alignment
+==================
+{:>5} {:<5} {:^5}
+---
+
+(source)
+
+==================
+Floating points
+==================
+{:10.2}
+---
+
+(source)
+
+==================
+Hexadecimal and binary formatting
+==================
+{:b} {:x} {:X}
+---
+
+(source)
+
+==================
+Debug formatting
+==================
+hello {world:?} again
+yet {world:#?} hello
+{:?} hello {:#?} hello
+---
+
+(source)
+
+==================
+Padding, width and alignment
+==================
+{:0>5} padded with zeroes, right-aligned
+{:0<5} padded with zeroes, left-aligned
+{:0^5} padded with zeroes, centered
+---
+
+(source)
+
+==================
+Formatting with Sign Handling
+==================
+{:+}
+{:-}
+{: }
+---
+
+(source)
+
+==================
+Scientific notation
+==================
+{:e}
+{:E}
+{:.*}
+---
+
+(source)
+
+==================
+multiple formatting options
+==================
+uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
+---
+
+(source)
+

@@ -28,28 +28,27 @@ module.exports = grammar({
       seq(
         "{",
         optional($.argument),
-        optional(seq(":", optional($.format_spec))),
+        optional(
+          seq(
+            ":",
+            seq(
+              optional(seq(optional($.fill), $.align)),
+              optional($.sign),
+              optional("#"),
+              optional("0"),
+              optional($.count),
+              optional(seq(".", choice($.count, "*"))),
+              optional($.type),
+            ),
+          ),
+        ),
         "}",
       ),
-
-    argument: ($) => choice($.integer, $.identifier),
 
     // this is actually optional, but we mark as repeat1 to avoid
     // tree-sitter complaining that it matches an empty string.
     //
     // Then, when we use this rule we add optional(...)
-    format_spec: ($) =>
-      repeat1(
-        seq(
-          optional(seq(optional($.fill), $.align)),
-          optional($.sign),
-          optional("#"),
-          optional("0"),
-          optional($.width),
-          optional(seq(".", $.precision)),
-          $.type,
-        ),
-      ),
 
     fill: () => /./,
 
@@ -57,19 +56,20 @@ module.exports = grammar({
 
     sign: () => choice("+", "-"),
 
-    width: ($) => $.count,
-
-    precision: ($) => choice($.count, "*"),
+    // precision: ($) => ,
 
     // it can also be "", the empty string. But we don't put it here
     // otherwise tree-sitter will complain about matching the empty string.
     //
     // Instead, what we do is mark it as "optional" anywhere we use it
-    type: ($) => choice("?", "x?", "X?", $.identifier),
+    type: ($) =>
+      choice("?", "x?", "X?", "o", "x", "X", "p", "b", "e", "E", $.identifier),
 
-    count: ($) => choice($.parameter, $.integer),
+    count: ($) => choice($.integer, $.parameter),
 
     parameter: ($) => seq($.argument, "$"),
+
+    argument: ($) => choice($.integer, $.identifier),
 
     // primitives
 

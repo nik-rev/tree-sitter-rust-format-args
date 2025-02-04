@@ -51,34 +51,19 @@
       "required": false,
       "types": [
         {
-          "type": "argument",
-          "named": true
-        },
-        {
-          "type": "format_spec",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "format_spec",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
           "type": "align",
           "named": true
         },
         {
-          "type": "fill",
+          "type": "argument",
           "named": true
         },
         {
-          "type": "precision",
+          "type": "count",
+          "named": true
+        },
+        {
+          "type": "fill",
           "named": true
         },
         {
@@ -87,10 +72,6 @@
         },
         {
           "type": "type",
-          "named": true
-        },
-        {
-          "type": "width",
           "named": true
         }
       ]
@@ -147,21 +128,6 @@
     }
   },
   {
-    "type": "precision",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "count",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "sign",
     "named": true,
     "fields": {}
@@ -176,21 +142,6 @@
       "types": [
         {
           "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "width",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "count",
           "named": true
         }
       ]
@@ -241,11 +192,27 @@
     "named": false
   },
   {
+    "type": "E",
+    "named": false
+  },
+  {
+    "type": "X",
+    "named": false
+  },
+  {
     "type": "X?",
     "named": false
   },
   {
     "type": "^",
+    "named": false
+  },
+  {
+    "type": "b",
+    "named": false
+  },
+  {
+    "type": "e",
     "named": false
   },
   {
@@ -261,8 +228,20 @@
     "named": true
   },
   {
+    "type": "o",
+    "named": false
+  },
+  {
+    "type": "p",
+    "named": false
+  },
+  {
     "type": "text",
     "named": true
+  },
+  {
+    "type": "x",
+    "named": false
   },
   {
     "type": "x?",
