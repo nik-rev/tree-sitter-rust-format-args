@@ -50,7 +50,7 @@ module.exports = grammar({
     //
     // Then, when we use this rule we add optional(...)
 
-    fill: () => /./,
+    fill: () => choice(/[^0]/, "0"),
 
     align: () => choice("<", "^", ">"),
 

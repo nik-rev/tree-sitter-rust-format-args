@@ -211,8 +211,17 @@
       ]
     },
     "fill": {
-      "type": "PATTERN",
-      "value": "."
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^0]"
+        },
+        {
+          "type": "STRING",
+          "value": "0"
+        }
+      ]
     },
     "align": {
       "type": "CHOICE",

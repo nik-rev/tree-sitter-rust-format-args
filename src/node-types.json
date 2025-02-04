@@ -43,6 +43,11 @@
     }
   },
   {
+    "type": "fill",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "format",
     "named": true,
     "fields": {},
@@ -214,10 +219,6 @@
   {
     "type": "e",
     "named": false
-  },
-  {
-    "type": "fill",
-    "named": true
   },
   {
     "type": "identifier",
