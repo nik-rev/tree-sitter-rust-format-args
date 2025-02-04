@@ -73,19 +73,19 @@ Padding and alignment
   (maybe_format
     (format
       (align)
-      (count
+      (width
         (integer))))
   (text)
   (maybe_format
     (format
       (align)
-      (count
+      (width
         (integer))))
   (text)
   (maybe_format
     (format
       (align)
-      (count
+      (width
         (integer))))
   (text))
 
@@ -99,7 +99,7 @@ Floating points
   (text)
   (maybe_format
     (format
-      (count
+      (width
         (integer))
       (count
         (integer))))
@@ -171,21 +171,21 @@ Padding, width and alignment
     (format
       (fill)
       (align)
-      (count
+      (width
         (integer))))
   (text)
   (maybe_format
     (format
       (fill)
       (align)
-      (count
+      (width
         (integer))))
   (text)
   (maybe_format
     (format
       (fill)
       (align)
-      (count
+      (width
         (integer))))
   (text))
 
@@ -244,7 +244,7 @@ uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
   (maybe_format
     (format
       (align)
-      (count
+      (width
         (integer))))
   (text)
   (maybe_format
@@ -260,6 +260,6 @@ uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
     (format
       (fill)
       (align)
-      (count
+      (width
         (integer))))
   (text))

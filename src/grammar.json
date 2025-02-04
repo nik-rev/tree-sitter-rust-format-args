@@ -145,8 +145,13 @@
                       "type": "CHOICE",
                       "members": [
                         {
-                          "type": "SYMBOL",
-                          "name": "count"
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "count"
+                          },
+                          "named": true,
+                          "value": "width"
                         },
                         {
                           "type": "BLANK"
@@ -209,6 +214,10 @@
           "value": "}"
         }
       ]
+    },
+    "width": {
+      "type": "STRING",
+      "value": "alias"
     },
     "fill": {
       "type": "CHOICE",

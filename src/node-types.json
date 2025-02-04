@@ -78,6 +78,10 @@
         {
           "type": "type",
           "named": true
+        },
+        {
+          "type": "width",
+          "named": true
         }
       ]
     }
@@ -147,6 +151,25 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "width",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "parameter",
           "named": true
         }
       ]

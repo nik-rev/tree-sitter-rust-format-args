@@ -36,7 +36,7 @@ module.exports = grammar({
               optional($.sign),
               optional("#"),
               optional("0"),
-              optional($.count),
+              optional(alias($.count, $.width)),
               optional(seq(".", choice($.count, "*"))),
               optional($.type),
             ),
@@ -44,6 +44,8 @@ module.exports = grammar({
         ),
         "}",
       ),
+
+    width: () => "alias",
 
     // this is actually optional, but we mark as repeat1 to avoid
     // tree-sitter complaining that it matches an empty string.
