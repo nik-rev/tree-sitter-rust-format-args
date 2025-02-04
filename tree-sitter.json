@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "rustfmt",
+      "camelcase": "RustFmt",
+      "scope": "source.rustfmt",
+      "file-types": [
+        ".rustfmt"
+      ],
+      "injection-regex": "^rustfmt$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "A grammar for Rust's std::fmt formatting language",
+    "authors": [
+      {
+        "name": "Nikita Revenco",
+        "email": "pm@nikrev.com",
+        "url": "https://nikrev.com/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/nik-rev/tree-sitter-rustfmt"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
