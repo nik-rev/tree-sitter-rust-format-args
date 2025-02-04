@@ -4,7 +4,11 @@ Empty value
 {}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format))
+  (text))
 
 ==================
 Variable with name
@@ -12,7 +16,13 @@ Variable with name
 {hello}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))))
+  (text))
 
 ==================
 Two variables
@@ -20,7 +30,18 @@ Two variables
 {hello} {world}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))))
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))))
+  (text))
 
 ==================
 Two variables with text
@@ -28,7 +49,18 @@ Two variables with text
 hello {hello} world {world}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))))
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))))
+  (text))
 
 ==================
 Padding and alignment
@@ -36,7 +68,26 @@ Padding and alignment
 {:>5} {:<5} {:^5}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (align)
+      (count
+        (integer))))
+  (text)
+  (maybe_format
+    (format
+      (align)
+      (count
+        (integer))))
+  (text)
+  (maybe_format
+    (format
+      (align)
+      (count
+        (integer))))
+  (text))
 
 ==================
 Floating points
@@ -44,7 +95,15 @@ Floating points
 {:10.2}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (count
+        (integer))
+      (count
+        (integer))))
+  (text))
 
 ==================
 Hexadecimal and binary formatting
@@ -52,7 +111,20 @@ Hexadecimal and binary formatting
 {:b} {:x} {:X}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text))
 
 ==================
 Debug formatting
@@ -62,7 +134,28 @@ yet {world:#?} hello
 {:?} hello {:#?} hello
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (argument
+        (identifier))
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text))
 
 ==================
 Padding, width and alignment
@@ -72,7 +165,29 @@ Padding, width and alignment
 {:0^5} padded with zeroes, centered
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (fill)
+      (align)
+      (count
+        (integer))))
+  (text)
+  (maybe_format
+    (format
+      (fill)
+      (align)
+      (count
+        (integer))))
+  (text)
+  (maybe_format
+    (format
+      (fill)
+      (align)
+      (count
+        (integer))))
+  (text))
 
 ==================
 Formatting with Sign Handling
@@ -82,7 +197,19 @@ Formatting with Sign Handling
 {: }
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (sign)))
+  (text)
+  (maybe_format
+    (format
+      (sign)))
+  (text)
+  (maybe_format
+    (format))
+  (text))
 
 ==================
 Scientific notation
@@ -92,7 +219,19 @@ Scientific notation
 {:.*}
 ---
 
-(source)
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text)
+  (maybe_format
+    (format))
+  (text))
 
 ==================
 multiple formatting options
@@ -100,5 +239,27 @@ multiple formatting options
 uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
 ---
 
-(source)
-
+(format_string
+  (text)
+  (maybe_format
+    (format
+      (align)
+      (count
+        (integer))))
+  (text)
+  (maybe_format
+    (format
+      (count
+        (integer))))
+  (text)
+  (maybe_format
+    (format
+      (type)))
+  (text)
+  (maybe_format
+    (format
+      (fill)
+      (align)
+      (count
+        (integer))))
+  (text))
