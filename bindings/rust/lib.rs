@@ -7,7 +7,7 @@
 //! let code = r#"
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! let language = tree_sitter_rust-format-args::LANGUAGE;
+//! let language = tree_sitter_rust_format_args::LANGUAGE;
 //! parser
 //!     .set_language(&language.into())
 //!     .expect("Error loading RustFmt parser");
@@ -21,13 +21,13 @@
 use tree_sitter_language::LanguageFn;
 
 extern "C" {
-    fn tree_sitter_rust-format-args() -> *const ();
+    fn tree_sitter_rust_format_args() -> *const ();
 }
 
 /// The tree-sitter [`LanguageFn`][LanguageFn] for this grammar.
 ///
 /// [LanguageFn]: https://docs.rs/tree-sitter-language/*/tree_sitter_language/struct.LanguageFn.html
-pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_rust-format-args) };
+pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_rust_format_args) };
 
 /// The content of the [`node-types.json`][] file for this grammar.
 ///
