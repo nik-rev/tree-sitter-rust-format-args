@@ -1,4 +1,4 @@
-module github.com/nik-rev/tree-sitter-rustfmt
+module github.com/nik-rev/tree-sitter-rust-format-args
 
 go 1.22
 

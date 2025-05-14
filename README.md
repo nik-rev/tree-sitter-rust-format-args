@@ -1,4 +1,4 @@
-# tree-sitter-rustfmt
+# tree-sitter-rust-format-args
 
 A grammar for Rust's `format_args!`.
 

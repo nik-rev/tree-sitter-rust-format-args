@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(tree-sitter-rustfmt
+project(tree-sitter-rust-format-args
         VERSION "0.1.0"
         DESCRIPTION "A grammar for Rust's std::fmt formatting language"
-        HOMEPAGE_URL "https://github.com/nik-rev/tree-sitter-rustfmt"
+        HOMEPAGE_URL "https://github.com/nik-rev/tree-sitter-rust-format-args"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
@@ -24,33 +24,33 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/parser.c"
                    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                    COMMENT "Generating parser.c")
 
-add_library(tree-sitter-rustfmt src/parser.c)
+add_library(tree-sitter-rust-format-args src/parser.c)
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/scanner.c)
-  target_sources(tree-sitter-rustfmt PRIVATE src/scanner.c)
+  target_sources(tree-sitter-rust-format-args PRIVATE src/scanner.c)
 endif()
-target_include_directories(tree-sitter-rustfmt PRIVATE src)
+target_include_directories(tree-sitter-rust-format-args PRIVATE src)
 
-target_compile_definitions(tree-sitter-rustfmt PRIVATE
+target_compile_definitions(tree-sitter-rust-format-args PRIVATE
                            $<$<BOOL:${TREE_SITTER_REUSE_ALLOCATOR}>:TREE_SITTER_REUSE_ALLOCATOR>
                            $<$<CONFIG:Debug>:TREE_SITTER_DEBUG>)
 
-set_target_properties(tree-sitter-rustfmt
+set_target_properties(tree-sitter-rust-format-args
                       PROPERTIES
                       C_STANDARD 11
                       POSITION_INDEPENDENT_CODE ON
                       SOVERSION "${TREE_SITTER_ABI_VERSION}.${PROJECT_VERSION_MAJOR}"
                       DEFINE_SYMBOL "")
 
-configure_file(bindings/c/tree-sitter-rustfmt.pc.in
-               "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-rustfmt.pc" @ONLY)
+configure_file(bindings/c/tree-sitter-rust-format-args.pc.in
+               "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-rust-format-args.pc" @ONLY)
 
 include(GNUInstallDirs)
 
-install(FILES bindings/c/tree-sitter-rustfmt.h
+install(FILES bindings/c/tree-sitter-rust-format-args.h
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/tree_sitter")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-rustfmt.pc"
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-rust-format-args.pc"
         DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig")
-install(TARGETS tree-sitter-rustfmt
+install(TARGETS tree-sitter-rust-format-args
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
 add_custom_target(ts-test "${TREE_SITTER_CLI}" test

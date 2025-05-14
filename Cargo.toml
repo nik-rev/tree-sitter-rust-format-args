@@ -1,13 +1,13 @@
 [package]
-name = "tree-sitter-rustfmt"
+name = "tree-sitter-rust-format-args"
 description = "A grammar for Rust's std::fmt formatting language"
 version = "0.1.0"
 authors = ["Nikita Revenco <pm@nikrev.com>"]
 license = "MIT"
 readme = "README.md"
-keywords = ["incremental", "parsing", "tree-sitter", "rustfmt"]
+keywords = ["incremental", "parsing", "tree-sitter", "rust-format-args"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/nik-rev/tree-sitter-rustfmt"
+repository = "https://github.com/nik-rev/tree-sitter-rust-format-args"
 edition = "2021"
 autoexamples = false
 

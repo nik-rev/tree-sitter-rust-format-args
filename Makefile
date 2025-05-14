@@ -2,8 +2,8 @@ ifeq ($(OS),Windows_NT)
 $(error Windows is not supported)
 endif
 
-LANGUAGE_NAME := tree-sitter-rustfmt
-HOMEPAGE_URL := https://github.com/nik-rev/tree-sitter-rustfmt
+LANGUAGE_NAME := tree-sitter-rust-format-args
+HOMEPAGE_URL := https://github.com/nik-rev/tree-sitter-rust-format-args
 VERSION := 0.1.0
 
 # repository

@@ -16,7 +16,7 @@
 // @ts-check
 
 module.exports = grammar({
-  name: "rustfmt",
+  name: "rust-format-args",
 
   rules: {
     // syntax: https://doc.rust-lang.org/std/fmt/index.html#syntax

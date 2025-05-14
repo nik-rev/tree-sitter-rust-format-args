@@ -1,13 +1,13 @@
 {
   "grammars": [
     {
-      "name": "rustfmt",
+      "name": "rust-format-args",
       "camelcase": "RustFmt",
-      "scope": "source.rustfmt",
+      "scope": "source.rust-format-args",
       "file-types": [
-        ".rustfmt"
+        ".rust-format-args"
       ],
-      "injection-regex": "^rustfmt$"
+      "injection-regex": "^rust-format-args$"
     }
   ],
   "metadata": {
@@ -22,7 +22,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/nik-rev/tree-sitter-rustfmt"
+      "repository": "https://github.com/nik-rev/tree-sitter-rust-format-args"
     }
   },
   "bindings": {

@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-rustfmt",
+  "name": "tree-sitter-rust-format-args",
   "version": "0.1.0",
   "description": "A grammar for Rust's std::fmt formatting language",
-  "repository": "https://github.com/nik-rev/tree-sitter-rustfmt",
+  "repository": "https://github.com/nik-rev/tree-sitter-rust-format-args",
   "license": "MIT",
   "author": {
     "name": "Nikita Revenco",
@@ -15,7 +15,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "rustfmt"
+    "rust-format-args"
   ],
   "files": [
     "grammar.js",
