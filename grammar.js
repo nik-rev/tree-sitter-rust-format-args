@@ -1,80 +1,108 @@
 /**
  * @file A grammar for Rust's std::fmt formatting language
- * @author Nikita Revenco <pm@nikrev.com>
+ * @author Nik Revenco <pm@nikrev.com>
  * @license MIT
  */
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
-/**
- * @file A grammar for Rust's std::fmt formatting language
- * @author ...
- * @license MIT
- */
 
-/// <reference types="tree-sitter-cli/dsl" />
-// @ts-check
+// NOTE: matches the empty string, so cannot be a rule
+// 
+// format_spec := [[fill]align][sign]['#']['0'][width]['.' precision][type]
+const format_spec = $ => seq(
+  optional(seq(optional($.fill), $.align)),
+  optional($.sign),
+  optional("#"),
+  optional("0"),
+  optional($.width),
+  optional(seq(".", $.precision)),
+  optional($.type),
+);
 
 module.exports = grammar({
-  name: "rust-format-args",
+  name: "rust_format_args",
 
+  // syntax: https://doc.rust-lang.org/std/fmt/index.html#syntax
   rules: {
-    // syntax: https://doc.rust-lang.org/std/fmt/index.html#syntax
-    format_string: ($) =>
+    // format_string := text [ maybe_format text ] *
+    format_string: $ =>
       seq(
         $.text,
         repeat(
           seq(
-            choice(alias("{{", $.escaped), alias("}}", $.escaped), $.format),
+            $._maybe_format,
             $.text,
           ),
         ),
       ),
 
+    // maybe_format := '{' '{' | '}' '}' | format
+    _maybe_format: $ => choice($.escaped, $.format),
+    escaped: $ => choice("{{", "}}"),
+
+    // FIXME: `{: }` is syntactically valid, because the `format_spec`
+    // can match the empty string. However, our grammar generates an ERROR
+    // 
+    // format := '{' [ argument ] [ ':' format_spec ] [ ws ] * '}'
     format: ($) =>
       seq(
         "{",
         optional($.argument),
         optional(
           seq(
-            alias(":", $.colon),
-            seq(
-              optional(seq(optional($.fill), $.align)),
-              optional($.sign),
-              optional("#"),
-              optional(alias("0", $.number)),
-              optional(alias($.count, $.width)),
-              optional(alias(seq(".", choice($.count, "*")), $.number)),
-              optional($.type),
-            ),
+            $.colon,
+            format_spec($),
           ),
         ),
+        repeat($._ws),
         "}",
       ),
+    colon: $ => ":",
 
-    escaped: () => "escaped",
-    width: () => "width",
-    number: () => "number",
-    colon: () => "colon",
+    // argument := integer | identifier
+    argument: $ => choice($.integer, $.identifier),
 
-    fill: () => choice(/[^0]/, "0"),
+    // NOTE: Have to do it in a weird way, otherwise
+    // tree-sitter generates some ERROR nodes
+    // 
+    // fill := character
+    fill: _ => choice(/[^0]/, "0"),
 
-    align: () => choice("<", "^", ">"),
+    // align := '<' | '^' | '>'
+    align: _ => choice("<", "^", ">"),
 
-    sign: () => choice("+", "-"),
-    type: ($) =>
+    // sign := '+' | '-'
+    sign: _ => choice("+", "-"),
+
+    // width := count
+    width: $ => $.count,
+
+    // precision := count | '*'
+    precision: $ => choice($.count, "*"),
+
+    // type := '?' | 'x?' | 'X?' | identifier
+    type: $ =>
       choice("?", "x?", "X?", "o", "x", "X", "p", "b", "e", "E", $.identifier),
 
-    count: ($) => choice(alias($.integer, $.number), $.parameter),
+    // count := parameter | integer
+    count: $ => choice($.parameter, $.integer),
 
-    parameter: ($) => seq($.argument, "$"),
+    // parameter := argument '$'
+    parameter: $ => seq($.argument, "$"),
 
-    argument: ($) => choice($.integer, $.identifier),
+    // ---
 
-    text: () => /[^\{\}]*/,
+    // ws is any character for which `char::is_whitespace` returns true
+    _ws: _ => /\s/,
 
-    integer: () => /\d+/,
+    // text must not contain any '{' or '}' characters
+    text: _ => /[^\{\}]*/,
 
-    identifier: () => /[_a-zA-Z][_a-zA-Z0-9]*/,
+    // integer is a decimal integer that may contain leading zeroes and must fit into a usize
+    integer: _ => /\d+/,
+
+    // identifier is an IDENTIFIER_OR_KEYWORD as defined by the Rust language reference
+    identifier: _ => /[_a-zA-Z][_a-zA-Z0-9]*/,
   },
 });

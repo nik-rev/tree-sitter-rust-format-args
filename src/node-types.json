@@ -24,6 +24,30 @@
     }
   },
   {
+    "type": "count",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "escaped",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "fill",
     "named": true,
     "fields": {}
@@ -53,7 +77,7 @@
           "named": true
         },
         {
-          "type": "number",
+          "type": "precision",
           "named": true
         },
         {
@@ -96,25 +120,6 @@
     }
   },
   {
-    "type": "number",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parameter",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "parameter",
     "named": true,
     "fields": {},
@@ -124,6 +129,21 @@
       "types": [
         {
           "type": "argument",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "precision",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "count",
           "named": true
         }
       ]
@@ -158,11 +178,7 @@
       "required": true,
       "types": [
         {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parameter",
+          "type": "count",
           "named": true
         }
       ]
@@ -177,11 +193,19 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
     "type": "+",
     "named": false
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
@@ -229,10 +253,6 @@
     "named": false
   },
   {
-    "type": "escaped",
-    "named": true
-  },
-  {
     "type": "identifier",
     "named": true
   },
@@ -265,7 +285,15 @@
     "named": false
   },
   {
+    "type": "{{",
+    "named": false
+  },
+  {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "}}",
     "named": false
   }
 ]

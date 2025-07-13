@@ -6,7 +6,6 @@ Empty value
 
 (format_string
   (text)
-  
   (format)
   (text))
 
@@ -18,7 +17,6 @@ Variable with name
 
 (format_string
   (text)
-  
   (format
     (argument
       (identifier)))
@@ -32,12 +30,10 @@ Two variables
 
 (format_string
   (text)
-  
   (format
     (argument
       (identifier)))
   (text)
-  
   (format
     (argument
       (identifier)))
@@ -51,12 +47,10 @@ hello {hello} world {world}
 
 (format_string
   (text)
-  
   (format
     (argument
       (identifier)))
   (text)
-  
   (format
     (argument
       (identifier)))
@@ -70,26 +64,26 @@ Padding and alignment
 
 (format_string
   (text)
-  
   (format
     (colon)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text)
-  
   (format
     (colon)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text)
-  
   (format
     (colon)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text))
 
 ==================
@@ -100,14 +94,14 @@ Floating points
 
 (format_string
   (text)
-  
   (format
     (colon)
     (width
-      (number))
-    (number)
-    (number
-      (number)))
+      (count
+        (integer)))
+    (precision
+      (count
+        (integer))))
   (text))
 
 ==================
@@ -118,17 +112,14 @@ Hexadecimal and binary formatting
 
 (format_string
   (text)
-  
   (format
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
     (type))
@@ -144,26 +135,22 @@ yet {world:#?} hello
 
 (format_string
   (text)
-  
   (format
     (argument
       (identifier))
     (colon)
     (type))
   (text)
-  
   (format
     (argument
       (identifier))
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
     (type))
@@ -179,54 +166,47 @@ Padding, width and alignment
 
 (format_string
   (text)
-  
   (format
     (colon)
     (fill)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text)
-  
   (format
     (colon)
     (fill)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text)
-  
   (format
     (colon)
     (fill)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text))
 
 ==================
-Formatting with Sign Handling
+Formatting with Signs
 ==================
 {:+}
 {:-}
-{: }
 ---
 
 (format_string
   (text)
-  
   (format
     (colon)
     (sign))
   (text)
-  
   (format
     (colon)
     (sign))
-  (text)
-  
-  (format
-    (colon))
   (text))
 
 ==================
@@ -239,21 +219,17 @@ Scientific notation
 
 (format_string
   (text)
-  
   (format
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
-    (number)
-    (number))
+    (precision))
   (text))
 
 ==================
@@ -264,34 +240,31 @@ uhm {:<10} | pi: {:.2} | hex: {:x} | padded: {:0>8}
 
 (format_string
   (text)
-  
   (format
     (colon)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text)
-  
   (format
     (colon)
-    (number)
-    (number
-      (number)))
+    (precision
+      (count
+        (integer))))
   (text)
-  
   (format
     (colon)
     (type))
   (text)
-  
   (format
     (colon)
     (fill)
     (align)
     (width
-      (number)))
+      (count
+        (integer))))
   (text))
-
 
 ==================
 Escaping
@@ -305,9 +278,7 @@ hello {{ world }} {hello}
   (text)
   (escaped)
   (text)
-  
   (format
     (argument
       (identifier)))
   (text))
-
