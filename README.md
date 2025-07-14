@@ -10,6 +10,7 @@ It's desirable to have syntax highlighting for arguments in format macros, like 
 
 ## Showcase
 
+Editor: [Helix](https://github.com/helix-editor/helix)
 
 ![image](https://github.com/user-attachments/assets/d2b06b05-d922-443f-af31-0bf7219526cb)
 
