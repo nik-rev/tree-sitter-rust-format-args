@@ -81,9 +81,13 @@ module.exports = grammar({
     // precision := count | '*'
     precision: $ => choice($.count, "*"),
 
+    // FIXME: Substituting the `$.identifier` in place of the
+    // identifier characters breaks the grammar - it's as if
+    // it is not there
+    // 
     // type := '?' | 'x?' | 'X?' | identifier
     type: $ =>
-      choice("?", "x?", "X?", "o", "x", "X", "p", "b", "e", "E", $.identifier),
+      choice("?", "x?", "X?", "o", "x", "X", "p", "b", "e", "E"),
 
     // count := parameter | integer
     count: $ => choice($.parameter, $.integer),
